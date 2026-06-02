@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ortega Car — Manutenção Automotiva e Socorro 24h em Mogi das Cruzes SP. Atendimento na oficina, domicílio e emergência.">
+  <title>Ortega Car | Manutenção Automotiva e Socorro 24h</title>
+</head>
+<body>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ferrari:     #CC0000;
+  --ferrari-mid: #AA0000;
+  --ferrari-deep:#8B0000;
+  --ferrari-grd: linear-gradient(135deg, #CC0000 0%, #8B0000 100%);
+  --carbon:      #080808;
+  --carbon2:     #0e0e0e;
+  --carbon3:     #161616;
+  --carbon4:     #202020;
+  --carbon5:     #2a2a2a;
+  --silver:      #c8c8c8;
+  --silver2:     #888;
+  --white:       #f5f5f0;
+  --head:        'Bebas Neue', sans-serif;
+  --body:        'Rajdhani', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--body); background: var(--carbon); color: var(--white); overflow-x: hidden; }
+
+/* ─── NAV ─── */
+nav {
+  height: 66px;
+  background: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 52px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  border-bottom: 1px solid rgba(204,0,0,0.3);
+  box-shadow: 0 1px 32px rgba(0,0,0,0.6);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  background: var(--ferrari-grd);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-mark svg { width: 18px; height: 18px; fill: #fff; }
+
+.logo-name {
+  font-family: var(--head);
+  font-size: 24px;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  line-height: 1;
+}
+
+.logo-name em { color: var(--ferrari); font-style: normal; }
+
+.logo-sub {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--silver2);
+  margin-top: 1px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--silver2);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0; right: 0;
+  height: 1px;
+  background: var(--ferrari);
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-cta {
+  background: var(--ferrari-grd);
+  color: var(--white);
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 9px 24px;
+  text-decoration: none;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  transition: filter 0.2s;
+}
+
+.nav-cta:hover { filter: brightness(1.15); }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  height: 95vh;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--carbon);
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% center;
+  opacity: 1;
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(8,8,8,0.97) 30%, rgba(8,8,8,0.5) 60%, rgba(8,8,8,0.1) 100%),
+    linear-gradient(to top, rgba(8,8,8,0.8) 0%, transparent 40%);
+}
+
+.hero-left-bar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--ferrari-grd);
+  z-index: 3;
+}
+
+.hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(204,0,0,.03) 0, transparent 1px, transparent 100px),
+    repeating-linear-gradient(0deg,  rgba(204,0,0,.025) 0, transparent 1px, transparent 100px);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 4;
+  padding: 0 52px;
+  width: 50%;
+  max-width: 50%;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(204,0,0,0.4);
+  background: rgba(204,0,0,0.08);
+  padding: 5px 16px 5px 10px;
+  margin-bottom: 28px;
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--ferrari);
+  border-radius: 50%;
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,100% { opacity:1; }
+  50%      { opacity:0.25; }
+}
+
+.hero-badge span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ferrari);
+}
+
+.hero h1 {
+  font-family: var(--head);
+  font-size: clamp(56px, 7vw, 96px);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.hero h1 .line-2 {
+  background: var(--ferrari-grd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero h1 .line-3 {
+  color: rgba(245,245,240,0.45);
+  -webkit-text-fill-color: rgba(245,245,240,0.45);
+}
+
+.hero-tagline {
+  font-size: 17px;
+  font-weight: 500;
+  color: #aaaaaa;
+  line-height: 1.65;
+  letter-spacing: 0.02em;
+  margin-bottom: 40px;
+  max-width: 100%;
+}
+
+.hero-tagline strong { color: var(--white); font-weight: 700; }
+
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+
+.btn-ferrari {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ferrari-grd);
+  color: var(--white);
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  text-decoration: none;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: filter 0.18s, transform 0.14s;
+}
+
+.btn-ferrari:hover { filter: brightness(1.15); transform: translateY(-2px); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--white);
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 13px 30px;
+  text-decoration: none;
+  border: 1px solid rgba(245,245,240,0.18);
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: border-color 0.18s, transform 0.14s;
+}
+
+.btn-ghost:hover { border-color: rgba(245,245,240,0.5); transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex;
+  gap: 44px;
+  flex-wrap: wrap;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.hstat-n {
+  font-family: var(--head);
+  font-size: 46px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--white);
+}
+
+.hstat-n em {
+  background: var(--ferrari-grd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: normal;
+}
+
+.hstat-l {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #444;
+  margin-top: 3px;
+}
+
+/* ─── SLASH ─── */
+.slash {
+  height: 3px;
+  background: linear-gradient(90deg, var(--ferrari) 0%, var(--ferrari-deep) 50%, transparent 100%);
+}
+
+/* ─── SECTIONS ─── */
+.sec          { padding: 90px 52px; }
+.sec-alt      { background: var(--carbon2); }
+
+.sec-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ferrari);
+  margin-bottom: 12px;
+}
+
+.sec-eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--ferrari);
+}
+
+.sec-title {
+  font-family: var(--head);
+  font-size: clamp(38px, 5.5vw, 66px);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.sec-title .grad {
+  background: var(--ferrari-grd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sec-desc {
+  font-size: 16px;
+  font-weight: 400;
+  color: #999;
+  line-height: 1.75;
+  max-width: 480px;
+  margin-bottom: 52px;
+}
+
+/* ─── SERVICES GRID ─── */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2px;
+}
+
+.svc-card {
+  background: var(--carbon3);
+  padding: 32px 26px 28px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: background 0.22s;
+}
+
+.svc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--ferrari-grd);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.svc-card:hover { background: var(--carbon4); }
+.svc-card:hover::before { transform: scaleX(1); }
+
+.svc-number {
+  font-family: var(--head);
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  background: linear-gradient(135deg, rgba(204,0,0,.18) 0%, rgba(139,0,0,.08) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+  transition: all 0.25s;
+}
+
+.svc-card:hover .svc-number {
+  background: var(--ferrari-grd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.svc-name {
+  font-family: var(--body);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.svc-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: #999;
+  line-height: 1.7;
+}
+
+.svc-pill {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ferrari);
+  border-left: 2px solid var(--ferrari);
+  padding-left: 8px;
+}
+
+/* ─── WHY ─── */
+.why-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.why-items { margin-top: 8px; }
+
+.why-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0;
+  padding: 26px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.18s;
+}
+
+.why-item:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
+.why-item:hover { background: rgba(204,0,0,.035); }
+
+.why-num {
+  font-family: var(--head);
+  font-size: 44px;
+  line-height: 1;
+  background: linear-gradient(135deg, rgba(204,0,0,.2) 0%, rgba(139,0,0,.1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.25s;
+}
+
+.why-item:hover .why-num {
+  background: var(--ferrari-grd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.why-text h3 {
+  font-family: var(--body);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.why-text p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #999;
+  line-height: 1.7;
+}
+
+.why-right { display: flex; flex-direction: column; gap: 16px; }
+
+.rating-card {
+  background: var(--carbon3);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-left: 3px solid;
+  border-image: linear-gradient(180deg, var(--ferrari) 0%, var(--ferrari-deep) 100%) 1;
+  padding: 36px 32px;
+}
+
+.rating-stars { display: flex; gap: 5px; margin-bottom: 14px; }
+.rating-stars span { color: #e8b800; font-size: 22px; }
+
+.rating-score {
+  font-family: var(--head);
+  font-size: 96px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, var(--white) 0%, var(--silver) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.rating-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #444;
+  margin-top: 6px;
+}
+
+.rating-label strong { color: #888; }
+
+.hours-card {
+  background: var(--ferrari-grd);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hours-num {
+  font-family: var(--head);
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.9);
+}
+
+.hours-title {
+  font-family: var(--head);
+  font-size: 26px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  line-height: 1;
+}
+
+.hours-sub {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-top: 4px;
+}
+
+/* ─── TESTIMONIALS ─── */
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px;
+}
+
+.testi-card {
+  background: var(--carbon3);
+  padding: 32px 28px;
+  border-top: 2px solid transparent;
+  transition: border-color 0.25s, background 0.22s;
+  position: relative;
+}
+
+.testi-card:hover {
+  border-top-color: var(--ferrari);
+  background: var(--carbon4);
+}
+
+.testi-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ferrari);
+  margin-bottom: 18px;
+  display: block;
+}
+
+.testi-quote {
+  font-family: var(--head);
+  font-size: 72px;
+  background: var(--ferrari-grd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.2;
+  line-height: 0.6;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.testi-text {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(245,245,240,0.78);
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 24px;
+}
+
+.testi-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.testi-author {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #555;
+}
+
+.testi-stars { display: flex; gap: 3px; }
+.testi-stars span { color: #e8b800; font-size: 13px; }
+
+/* ─── CONTACT ─── */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.contact-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.contact-icon {
+  width: 42px;
+  height: 42px;
+  background: rgba(204,0,0,0.08);
+  border: 1px solid rgba(204,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+}
+
+.contact-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ferrari);
+  margin-bottom: 4px;
+}
+
+.contact-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+.contact-value:hover { color: var(--ferrari); }
+
+.cta-box {
+  background: var(--carbon3);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-left: 3px solid;
+  border-image: linear-gradient(180deg, var(--ferrari) 0%, var(--ferrari-deep) 100%) 1;
+  padding: 40px 36px;
+}
+
+.cta-title {
+  font-family: var(--head);
+  font-size: 46px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 0.92;
+  margin-bottom: 14px;
+}
+
+.cta-title .grad {
+  background: var(--ferrari-grd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cta-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--silver2);
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+
+.wpp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #fff;
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 15px 28px;
+  text-decoration: none;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  margin-bottom: 10px;
+  transition: filter 0.18s, transform 0.14s;
+}
+
+.wpp-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
+
+.tel-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--white);
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 13px 24px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.12);
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: border-color 0.18s, transform 0.14s;
+}
+
+.tel-btn:hover { border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: #030303;
+  border-top: 2px solid var(--ferrari-deep);
+  padding: 28px 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.foot-logo {
+  font-family: var(--head);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--white);
+}
+
+.foot-logo em {
+  background: var(--ferrari-grd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: normal;
+}
+
+.foot-info {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #444;
+  text-align: right;
+  line-height: 1.8;
+}
+
+/* ─── LOCALIZAÇÃO ─── */
+.loc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 2px;
+  height: 460px;
+  margin-bottom: 0;
+}
+
+.loc-fachada {
+  display: flex;
+  flex-direction: column;
+  background: var(--carbon3);
+  overflow: hidden;
+}
+
+.fachada-img {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.loc-address {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  background: var(--carbon3);
+  flex-shrink: 0;
+}
+
+.loc-address-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+
+.loc-address-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ferrari);
+  margin-bottom: 4px;
+}
+
+.loc-address-val {
+  font-size: 13px;
+  font-weight: 500;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.loc-map {
+  background: var(--carbon4);
+  overflow: hidden;
+  position: relative;
+}
+
+.loc-map::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid rgba(204,0,0,0.15);
+}
+
+.loc-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 28px 0 0;
+}
+
+@media (max-width: 900px) {
+  .loc-grid { grid-template-columns: 1fr; height: auto; }
+  .loc-fachada { height: 280px; }
+  .loc-map  { height: 300px; }
+}
+
+/* ─── ANIMAÇÕES ─── */
+.fade { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.fade.on { opacity: 1; transform: translateY(0); }
+
+/* ══════════════════════════════════════
+   RESPONSIVIDADE
+══════════════════════════════════════ */
+
+/* ── TABLET 900px ── */
+@media (max-width: 900px) {
+
+  .why-layout,
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .loc-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .loc-fachada { height: 260px; }
+  .loc-map     { height: 320px; }
+
+  .hero-content {
+    width: 70%;
+    max-width: 70%;
+  }
+
+  .svc-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* ── MOBILE 620px ── */
+@media (max-width: 620px) {
+
+  /* NAV */
+  nav {
+    padding: 0 20px;
+    height: 60px;
+  }
+
+  .nav-links { display: none; }
+
+  .logo-name { font-size: 20px; }
+  .logo-sub  { display: none; }
+
+  .nav-cta {
+    font-size: 11px;
+    padding: 7px 14px;
+  }
+
+  /* HERO */
+  .hero {
+    height: auto;
+    min-height: 100svh;
+    align-items: flex-end;
+    padding-bottom: 48px;
+  }
+
+  .hero-img {
+    content: url('./img/bannerMob.png');
+    object-position: center center;
+  }
+
+  .hero-vignette {
+    background:
+      linear-gradient(0deg, rgba(8,8,8,0.98) 30%, rgba(8,8,8,0.75) 60%, rgba(8,8,8,0.3) 100%),
+      linear-gradient(90deg, rgba(8,8,8,0.6) 0%, transparent 100%);
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  .hero-badge {
+    margin-bottom: 16px;
+  }
+
+  .hero-badge span {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+  }
+
+  .hero h1 {
+    font-size: clamp(52px, 14vw, 72px);
+    margin-bottom: 16px;
+  }
+
+  .hero-tagline {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .btn-ferrari,
+  .btn-ghost {
+    width: 100%;
+    justify-content: center;
+    font-size: 13px;
+    padding: 14px 20px;
+  }
+
+  .hero-stats {
+    gap: 24px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+  }
+
+  .hstat-n { font-size: 36px; }
+  .hstat-l { font-size: 9px; }
+
+  /* SECTIONS */
+  .sec {
+    padding: 56px 20px;
+  }
+
+  .sec-title {
+    font-size: clamp(32px, 9vw, 48px);
+  }
+
+  .sec-desc {
+    font-size: 15px;
+    margin-bottom: 36px;
+  }
+
+  /* SERVICES */
+  .svc-grid {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .svc-card {
+    padding: 24px 20px;
+  }
+
+  .svc-number { font-size: 48px; }
+  .svc-name   { font-size: 16px; }
+
+  /* WHY */
+  .why-layout { gap: 32px; }
+
+  .why-item {
+    grid-template-columns: 48px 1fr;
+    padding: 20px 0;
+  }
+
+  .why-num  { font-size: 36px; }
+  .why-text h3 { font-size: 16px; }
+  .why-text p  { font-size: 13px; }
+
+  .rating-card { padding: 24px 20px; }
+  .rating-score { font-size: 72px; }
+
+  .hours-card { padding: 18px 20px; gap: 14px; }
+  .hours-num  { font-size: 40px; }
+  .hours-title { font-size: 22px; }
+
+  /* TESTIMONIALS */
+  .testi-grid {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .testi-card { padding: 24px 20px; }
+  .testi-text { font-size: 14px; }
+
+  /* LOCALIZAÇÃO */
+  .loc-grid {
+    gap: 2px;
+  }
+
+  .loc-fachada { height: 220px; }
+  .loc-map     { height: 260px; }
+
+  .loc-address { padding: 14px 16px; }
+  .loc-address-val { font-size: 12px; }
+
+  .loc-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .loc-actions .btn-ferrari,
+  .loc-actions .btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* CONTACT */
+  .contact-layout { gap: 36px; }
+
+  .contact-item { margin-bottom: 18px; }
+
+  .cta-box { padding: 28px 20px; }
+  .cta-title { font-size: 36px; }
+
+  .wpp-btn,
+  .tel-btn {
+    font-size: 13px;
+    padding: 13px 20px;
+  }
+
+  /* FOOTER */
+  footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    gap: 10px;
+  }
+
+  .foot-info { text-align: center; }
+  .foot-logo { font-size: 20px; }
+}
+
+/* ── MOBILE PEQUENO 380px ── */
+@media (max-width: 380px) {
+
+  .hero h1 {
+    font-size: clamp(44px, 13vw, 58px);
+  }
+
+  .hero-stats {
+    gap: 16px;
+  }
+
+  .hstat-n { font-size: 30px; }
+
+  .sec-title {
+    font-size: clamp(28px, 9vw, 40px);
+  }
+
+  nav { height: 56px; }
+
+  .logo-name { font-size: 18px; }
+
+  .nav-cta {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+}
+</style>
+
+<!-- NAV -->
+<nav>
+  <a href="#top" class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 18 18"><path d="M9 2L16 6v6l-7 4L2 12V6z"/></svg>
+    </div>
+    <div>
+      <div class="logo-name">ORTEGA <em>CAR</em></div>
+      <div class="logo-sub">Manutenção Automotiva</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#svc">Serviços</a></li>
+    <li><a href="#why">Diferenciais</a></li>
+    <li><a href="#dep">Depoimentos</a></li>
+    <li><a href="#ctt">Contato</a></li>
+  </ul>
+  <a href="https://api.whatsapp.com/send?phone=5511960684018" class="nav-cta" target="_blank">🚨 Emergência 24H</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <img class="hero-img" src="./img/banner.png" alt="Carro esportivo">
+  <div class="hero-vignette"></div>
+  <div class="hero-left-bar"></div>
+  <div class="hero-grid-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span>Mogi das Cruzes · SP · Atendimento 24h</span>
+    </div>
+
+    <h1>
+      ORTEGA<br>
+      <span class="line-2">CAR</span><br>
+      <span class="line-3">MECÂNICA</span>
+    </h1>
+
+    <p class="hero-tagline">
+      <strong>Qualidade e honestidade.</strong><br>
+      Na oficina, na sua casa ou onde seu carro parar.
+    </p>
+
+    <div class="hero-btns">
+      <a href="https://api.whatsapp.com/send?phone=5511960684018" class="btn-ferrari" target="_blank">🚨 SOCORRO AGORA</a>
+      <a href="#svc" class="btn-ghost">VER SERVIÇOS →</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="hstat-n">5.0<em>★</em></div>
+        <div class="hstat-l">Google</div>
+      </div>
+      <div>
+        <div class="hstat-n">57<em>+</em></div>
+        <div class="hstat-l">Avaliações</div>
+      </div>
+      <div>
+        <div class="hstat-n">24<em>H</em></div>
+        <div class="hstat-l">Todo dia</div>
+      </div>
+      <div>
+        <div class="hstat-n">100<em>%</em></div>
+        <div class="hstat-l">Satisfação</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="slash"></div>
+
+<!-- SERVICES -->
+<section class="sec sec-alt" id="svc">
+  <div class="sec-eyebrow fade">O que fazemos</div>
+  <h2 class="sec-title fade">NOSSOS <span class="grad">SERVIÇOS</span></h2>
+  <p class="sec-desc fade">Atendimento completo — na oficina, na sua casa ou onde seu carro parar.</p>
+
+  <div class="svc-grid">
+    <div class="svc-card fade">
+      <div class="svc-number">01</div>
+      <div class="svc-name">Manutenção Geral</div>
+      <p class="svc-desc">Revisões completas, diagnósticos precisos e reparos mecânicos preventivos e corretivos.</p>
+    </div>
+    <div class="svc-card fade">
+      <div class="svc-number">02</div>
+      <div class="svc-name">Socorro 24 Horas</div>
+      <p class="svc-desc">Pane na rua ou estrada? Atendemos todos os dias, feriados e madrugadas.</p>
+      <span class="svc-pill">DISPONÍVEL AGORA</span>
+    </div>
+    <div class="svc-card fade">
+      <div class="svc-number">03</div>
+      <div class="svc-name">Atendimento Domiciliar</div>
+      <p class="svc-desc">O mecânico vai até você — na sua casa ou trabalho, onde for mais cômodo.</p>
+    </div>
+    <div class="svc-card fade">
+      <div class="svc-number">04</div>
+      <div class="svc-name">Diagnóstico Especializado</div>
+      <p class="svc-desc">Resolvemos o que outras 3 oficinas não conseguiram. Tecnologia e experiência real.</p>
+    </div>
+    <div class="svc-card fade">
+      <div class="svc-number">05</div>
+      <div class="svc-name">Arrefecimento</div>
+      <p class="svc-desc">Vazamento de água, superaquecimento, radiador — manutenção completa do sistema.</p>
+    </div>
+    <div class="svc-card fade">
+      <div class="svc-number">06</div>
+      <div class="svc-name">Suspensão e Freios</div>
+      <p class="svc-desc">Pastilhas, discos, amortecedores — segurança em cada componente trocado.</p>
+    </div>
+    <div class="svc-card fade">
+      <div class="svc-number">07</div>
+      <div class="svc-name">Motor e Cabeçote</div>
+      <p class="svc-desc">Retífica e manutenção pesada. Restauramos a potência e vida útil do seu motor.</p>
+    </div>
+  </div>
+</section>
+
+<div class="slash"></div>
+
+<!-- WHY -->
+<section class="sec" id="why">
+  <div class="why-layout">
+    <div>
+      <div class="sec-eyebrow fade">Por que escolher</div>
+      <h2 class="sec-title fade">POR QUE <span class="grad">SOMOS<br>DIFERENTES</span></h2>
+      <p class="sec-desc fade">Transparência, compromisso e resultado — em cada atendimento.</p>
+      <div class="why-items">
+        <div class="why-item fade">
+          <div class="why-num">01</div>
+          <div class="why-text">
+            <h3>Honestidade Acima de Tudo</h3>
+            <p>Avaliamos com critério e explicamos o necessário — sem empurrar serviços desnecessários.</p>
+          </div>
+        </div>
+        <div class="why-item fade">
+          <div class="why-num">02</div>
+          <div class="why-text">
+            <h3>24 Horas, Todo Dia</h3>
+            <p>Segunda a domingo, feriados, madrugadas — quando seu carro para, nós não paramos.</p>
+          </div>
+        </div>
+        <div class="why-item fade">
+          <div class="why-num">03</div>
+          <div class="why-text">
+            <h3>Preço Justo e Transparente</h3>
+            <p>Orçamento claro antes de qualquer serviço. Qualidade sem surpresa na hora de pagar.</p>
+          </div>
+        </div>
+        <div class="why-item fade">
+          <div class="why-num">04</div>
+          <div class="why-text">
+            <h3>Entrega no Prazo</h3>
+            <p>Se prometemos, cumprimos — mesmo que seja preciso trabalhar até de madrugada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-right">
+      <div class="rating-card fade">
+        <div class="rating-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <div class="rating-score">5.0</div>
+        <div class="rating-label">Baseado em <strong>57 avaliações</strong> no Google</div>
+      </div>
+      <div class="hours-card fade">
+        <div class="hours-num">24H</div>
+        <div>
+          <div class="hours-title">Aberto Todo Dia</div>
+          <div class="hours-sub">Seg a Dom — incluindo feriados</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="slash"></div>
+
+<!-- TESTIMONIALS -->
+<section class="sec sec-alt" id="dep">
+  <div class="sec-eyebrow fade">Quem usou, aprovou</div>
+  <h2 class="sec-title fade">O QUE <span class="grad">DIZEM NOSSOS<br>CLIENTES</span></h2>
+  <p class="sec-desc fade">Nota máxima em todas as avaliações.</p>
+
+  <div class="testi-grid">
+    <div class="testi-card fade">
+      <span class="testi-tag">▶ Diagnóstico Difícil</span>
+      <span class="testi-quote">"</span>
+      <p class="testi-text">Estava com um problema no veículo que passei em outras 3 mecânicas e não conseguiram resolver. Você pegou o carro e entregou sem nenhum defeito. Recomendo 100%.</p>
+      <div class="testi-foot">
+        <span class="testi-author">Cliente · Jan 2026</span>
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      </div>
+    </div>
+    <div class="testi-card fade">
+      <span class="testi-tag">▶ Honestidade e Confiança</span>
+      <span class="testi-quote">"</span>
+      <p class="testi-text">Mecânico de extrema confiança! Fez avaliação detalhada, explicou o que o carro precisava e não tentou empurrar serviços desnecessários. Preço justo.</p>
+      <div class="testi-foot">
+        <span class="testi-author">Cliente · Mai 2026</span>
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      </div>
+    </div>
+    <div class="testi-card fade">
+      <span class="testi-tag">▶ Atendimento Emergencial</span>
+      <span class="testi-quote">"</span>
+      <p class="testi-text">Tive uma emergência com vazamento de água... não mediram esforços para entregar meu carro no mesmo dia, foram até tarde da noite para concluir o serviço.</p>
+      <div class="testi-foot">
+        <span class="testi-author">Cliente · Dez 2025</span>
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="slash"></div>
+
+<!-- LOCALIZAÇÃO -->
+<section class="sec sec-alt" id="loc">
+  <div class="sec-eyebrow fade">Como chegar</div>
+  <h2 class="sec-title fade">NOSSA <span class="grad">LOCALIZAÇÃO</span></h2>
+
+  <div class="loc-grid fade">
+
+    <!-- FOTO DA FACHADA -->
+    <div class="loc-fachada">
+      <img src="./img/fachada.png" alt="Fachada Ortega Car" class="fachada-img">
+      <div class="loc-address">
+        <div class="loc-address-icon">📍</div>
+        <div>
+          <div class="loc-address-label">Endereço</div>
+          <div class="loc-address-val">R. Júlio Aragão, 160 — Braz Cubas</div>
+          <div class="loc-address-val">Mogi das Cruzes — SP, 08740-030</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAPA -->
+    <div class="loc-map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.879193185908!2d-46.19417492357177!3d-23.521067878754cha!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5ba47b6b8b3f%3A0x4e2f7e2b3c4a5d6e!2sR.%20J%C3%BAlio%20Arag%C3%A3o%2C%20160%20-%20Braz%20Cubas%2C%20Mogi%20das%20Cruzes%20-%20SP%2C%2008740-030!5e0!3m2!1spt-BR!2sbr!4v1716000000000!5m2!1spt-BR!2sbr"
+        width="100%"
+        height="100%"
+        style="border:0; display:block;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Localização Ortega Car">
+      </iframe>
+    </div>
+
+  </div>
+
+  <div class="loc-actions fade">
+    <a href="https://www.google.com/maps/dir/?api=1&destination=R.+Júlio+Aragão,+160,+Braz+Cubas,+Mogi+das+Cruzes+SP+08740-030" target="_blank" class="btn-ferrari" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
+      🗺️ TRAÇAR ROTA
+    </a>
+    <a href="https://api.whatsapp.com/send?phone=5511960684018" target="_blank" class="btn-ghost" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
+      💬 FALAR COM A OFICINA
+    </a>
+  </div>
+</section>
+
+<div class="slash"></div>
+
+<!-- CONTACT -->
+<section class="sec" id="ctt">
+  <div class="contact-layout">
+    <div>
+      <div class="sec-eyebrow fade">Fale conosco</div>
+      <h2 class="sec-title fade">AGENDE OU<br><span class="grad">CHAME AGORA</span></h2>
+      <p class="sec-desc fade">Emergência ou agendamento — estamos prontos para resolver.</p>
+
+      <div class="contact-item fade">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Endereço</div>
+          <span class="contact-value">R. Júlio Aragão, 160 — Braz Cubas, Mogi das Cruzes SP</span>
+        </div>
+      </div>
+      <div class="contact-item fade">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Telefone</div>
+          <a href="tel:+5511922313058" class="contact-value">(11) 92231-3058</a>
+        </div>
+      </div>
+      <div class="contact-item fade">
+        <div class="contact-icon">💬</div>
+        <div>
+          <div class="contact-label">WhatsApp Emergência</div>
+          <a href="https://api.whatsapp.com/send?phone=5511960684018" class="contact-value" target="_blank">(11) 96068-4018</a>
+        </div>
+      </div>
+      <div class="contact-item fade">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-label">Horário</div>
+          <span class="contact-value">Segunda a Domingo — 24 horas</span>
+        </div>
+      </div>
+      <div class="contact-item fade">
+        <div class="contact-icon">💳</div>
+        <div>
+          <div class="contact-label">Pagamento</div>
+          <span class="contact-value">Crédito, Débito, PIX e NFC</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cta-box fade">
+        <div class="cta-title">EMERGÊNCIA?<br><span class="grad">CHAME AGORA.</span></div>
+        <p class="cta-desc">Pane na rua, superaquecimento ou qualquer problema — nossa equipe resolve, qualquer hora.</p>
+        <a href="https://api.whatsapp.com/send?phone=5511960684018" class="wpp-btn" target="_blank">💬 CHAMAR NO WHATSAPP</a>
+        <a href="tel:+5511922313058" class="tel-btn">📞 (11) 92231-3058</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">ORTEGA <em>CAR</em></div>
+  <div class="foot-info">
+    Manutenção Automotiva e Socorro · Mogi das Cruzes, SP<br>
+    © 2026 Ortega Car — Todos os direitos reservados
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>

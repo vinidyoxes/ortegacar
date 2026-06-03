@@ -1698,72 +1698,84 @@ footer {
 
 <script>
 /* ═══════════════════════════════════════════
-   GOOGLE REVIEWS — Places API
+   GOOGLE REVIEWS — Maps JavaScript API (Places)
 ═══════════════════════════════════════════ */
 (function () {
-  const PLACE_ID  = 'ChIJS9PePFzZzZQRhQ96SyH3dZg';
-  const API_KEY   = 'AIzaSyAoo6_4um8GE3Qwr9HCGgUQ2_4ouudLKq4';
-  const track     = document.getElementById('reviewsTrack');
-  const dotsWrap  = document.getElementById('revDots');
-  const btnPrev   = document.getElementById('revPrev');
-  const btnNext   = document.getElementById('revNext');
+  const PLACE_ID = 'ChIJS9PePFzZzZQRhQ96SyH3dZg';
+  const API_KEY  = 'AIzaSyAoo6_4um8GE3Qwr9HCGgUQ2_4ouudLKq4';
+  const track    = document.getElementById('reviewsTrack');
+  const dotsWrap = document.getElementById('revDots');
+  const btnPrev  = document.getElementById('revPrev');
+  const btnNext  = document.getElementById('revNext');
 
-  let current      = 0;
-  let cards        = [];
-  let perPage      = getPerPage();
+  let current = 0;
+  let cards   = [];
+  let perPage = getPerPage();
 
-  function getPerPage () {
+  function getPerPage() {
     if (window.innerWidth <= 620) return 1;
     if (window.innerWidth <= 900) return 2;
     return 3;
   }
 
-  /* ── Buscar via Places API ── */
-  function fetchReviews () {
-    const url =
-      `https://maps.googleapis.com/maps/api/place/details/json` +
-      `?place_id=${PLACE_ID}` +
-      `&fields=reviews,rating,user_ratings_total` +
-      `&language=pt-BR` +
-      `&key=${API_KEY}`;
-
-    /* A Places API bloqueia requisições direto do browser (CORS).
-       Usamos o endpoint via script tag (JSONP-like com callback) */
-    const script   = document.createElement('script');
-    window._grevCB = function (data) {
-      document.body.removeChild(script);
-      if (data && data.result && data.result.reviews) {
-        const reviews = data.result.reviews
-          .filter(r => r.rating >= 4)
-          .sort((a, b) => b.time - a.time);
-        renderCards(reviews);
-      } else {
-        showError();
+  /* ── Inicializa após Maps JS carregar ── */
+  window._initGoogleReviews = function () {
+    const service = new google.maps.places.PlacesService(
+      document.createElement('div')
+    );
+    service.getDetails(
+      {
+        placeId: PLACE_ID,
+        fields: ['reviews', 'rating', 'user_ratings_total'],
+        language: 'pt-BR',
+      },
+      function (place, status) {
+        if (
+          status === google.maps.places.PlacesServiceStatus.OK &&
+          place.reviews && place.reviews.length
+        ) {
+          const reviews = place.reviews
+            .filter(r => r.rating >= 4)
+            .sort((a, b) => b.time - a.time);
+          renderCards(reviews);
+        } else {
+          showError();
+        }
       }
-    };
-    script.src = url + '&callback=_grevCB';
-    script.onerror = showError;
-    document.body.appendChild(script);
-  }
+    );
+  };
+
+  /* ── Carregar SDK ── */
+  const sdk = document.createElement('script');
+  sdk.src =
+    'https://maps.googleapis.com/maps/api/js' +
+    '?key=' + API_KEY +
+    '&libraries=places' +
+    '&callback=_initGoogleReviews';
+  sdk.async = true;
+  sdk.defer = true;
+  sdk.onerror = showError;
+  document.head.appendChild(sdk);
 
   /* ── Renderizar cards ── */
-  function renderCards (reviews) {
+  function renderCards(reviews) {
     track.innerHTML = '';
     cards = reviews;
 
     reviews.forEach(r => {
       const initials = r.author_name
-        .split(' ')
-        .slice(0, 2)
-        .map(w => w[0])
-        .join('')
-        .toUpperCase();
+        .split(' ').slice(0, 2)
+        .map(w => w[0]).join('').toUpperCase();
 
-      const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
-      const date  = new Date(r.time * 1000).toLocaleDateString('pt-BR', {
+      const starsHtml = Array.from({ length: 5 }, (_, i) =>
+        `<span style="color:${i < r.rating ? '#e8b800' : '#333'}">${i < r.rating ? '★' : '☆'}</span>`
+      ).join('');
+
+      const date = new Date(r.time * 1000).toLocaleDateString('pt-BR', {
         month: 'short', year: 'numeric'
       });
-      const text  = r.text || 'Ótimo atendimento!';
+
+      const text = r.text ? r.text.trim() : 'Ótimo atendimento!';
 
       const card = document.createElement('div');
       card.className = 'rev-card';
@@ -1778,7 +1790,7 @@ footer {
             <div class="rev-date">${date}</div>
           </div>
         </div>
-        <div class="rev-stars">${[...stars].map(s => `<span>${s}</span>`).join('')}</div>
+        <div class="rev-stars">${starsHtml}</div>
         <span class="rev-quote">"</span>
         <p class="rev-text">${text}</p>
       `;
@@ -1789,8 +1801,8 @@ footer {
     goTo(0);
   }
 
-  /* ── Dots de navegação ── */
-  function buildDots () {
+  /* ── Dots ── */
+  function buildDots() {
     dotsWrap.innerHTML = '';
     const total = Math.ceil(cards.length / perPage);
     for (let i = 0; i < total; i++) {
@@ -1802,26 +1814,30 @@ footer {
   }
 
   /* ── Navegação ── */
-  function goTo (idx) {
+  function goTo(idx) {
     const total = Math.ceil(cards.length / perPage);
-    current = (idx + total) % total;
+    if (total === 0) return;
+    current = ((idx % total) + total) % total;
 
-    const cardW   = track.querySelector('.rev-card');
-    if (!cardW) return;
-    const gap     = 2;
-    const offset  = current * perPage * (cardW.offsetWidth + gap);
+    const cardEl = track.querySelector('.rev-card');
+    if (!cardEl) return;
+    const offset = current * perPage * (cardEl.offsetWidth + 2);
     track.style.transform = `translateX(-${offset}px)`;
 
-    dotsWrap.querySelectorAll('.rev-dot').forEach((d, i) => {
-      d.classList.toggle('active', i === current);
-    });
+    dotsWrap.querySelectorAll('.rev-dot').forEach((d, i) =>
+      d.classList.toggle('active', i === current)
+    );
   }
 
-  function showError () {
+  function showError() {
     track.innerHTML = `
       <div class="reviews-loading">
-        <span>Não foi possível carregar as avaliações. Veja no <a href="https://g.page/r/ChIJS9PePFzZzZQRhQ96SyH3dZg" target="_blank" style="color:var(--ferrari)">Google Maps ↗</a></span>
+        <span>Não foi possível carregar as avaliações. Veja no
+          <a href="https://g.page/r/ChIJS9PePFzZzZQRhQ96SyH3dZg" target="_blank"
+             style="color:var(--ferrari)">Google Maps ↗</a>
+        </span>
       </div>`;
+    document.querySelector('.reviews-nav').style.display = 'none';
   }
 
   /* ── Eventos ── */
@@ -1830,19 +1846,13 @@ footer {
 
   window.addEventListener('resize', () => {
     const np = getPerPage();
-    if (np !== perPage) {
-      perPage = np;
-      buildDots();
-      goTo(0);
-    }
+    if (np !== perPage) { perPage = np; buildDots(); goTo(0); }
   });
 
   /* ── Auto-play ── */
   setInterval(() => {
     if (cards.length > perPage) goTo(current + 1);
   }, 6000);
-
-  fetchReviews();
 })();
 </script>
 

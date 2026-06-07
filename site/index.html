@@ -35,7 +35,7 @@ body { font-family: var(--body); background: var(--carbon); color: var(--white);
 
 /* ─── NAV ─── */
 nav {
-  height: 66px;
+  height: 9rem;
   background: #050505;
   display: flex;
   align-items: center;
@@ -51,40 +51,15 @@ nav {
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
   text-decoration: none;
-}
-
-.logo-mark {
-  width: 36px;
-  height: 36px;
-  background: var(--ferrari-grd);
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-shrink: 0;
 }
 
-.logo-mark svg { width: 18px; height: 18px; fill: #fff; }
-
-.logo-name {
-  font-family: var(--head);
-  font-size: 24px;
-  letter-spacing: 0.12em;
-  color: var(--white);
-  line-height: 1;
-}
-
-.logo-name em { color: var(--ferrari); font-style: normal; }
-
-.logo-sub {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--silver2);
-  margin-top: 1px;
+.logo-img {
+  height: 9rem;
+  width: 9rem;
+  object-fit: contain;
+  display: block;
 }
 
 .nav-links {
@@ -1079,10 +1054,13 @@ footer {
     height: 60px;
   }
 
+  nav {
+    height: 5.5rem;
+  }
+
   .nav-links { display: none; }
 
-  .logo-name { font-size: 20px; }
-  .logo-sub  { display: none; }
+  .logo-img { height: 5rem; width: 5rem; }
 
   .nav-cta {
     font-size: 11px;
@@ -1278,7 +1256,7 @@ footer {
 
   nav { height: 56px; }
 
-  .logo-name { font-size: 18px; }
+  .logo-img { height: 4rem; width: 4rem; }
 
   .nav-cta {
     font-size: 10px;
@@ -1290,13 +1268,7 @@ footer {
 <!-- NAV -->
 <nav>
   <a href="#top" class="logo">
-    <div class="logo-mark">
-      <svg viewBox="0 0 18 18"><path d="M9 2L16 6v6l-7 4L2 12V6z"/></svg>
-    </div>
-    <div>
-      <div class="logo-name">ORTEGA <em>CAR</em></div>
-      <div class="logo-sub">Manutenção Automotiva</div>
-    </div>
+    <img src="./img/logo.png" alt="Ortega Car" class="logo-img">
   </a>
   <ul class="nav-links">
     <li><a href="#svc">Serviços</a></li>

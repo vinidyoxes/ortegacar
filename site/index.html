@@ -894,7 +894,7 @@ footer {
 }
 
 .rev-slide {
-  flex: 0 0 66%;
+  flex: 0 0 42%;
   min-width: 0;
   margin: 0 8px;
   background: var(--carbon3);
@@ -1008,6 +1008,108 @@ footer {
   .rev-slide { flex: 0 0 82%; margin: 0 6px; }
   .rev-viewport { margin: 0 -20px; padding: 0 20px; }
   .rev-arr { width: 36px; height: 36px; font-size: 16px; }
+}
+
+/* ─── LIGHTBOX ─── */
+.lb-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.96);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.lb-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lb-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90vw;
+  max-height: 88vh;
+  padding: 0 60px;
+}
+
+#lbImg {
+  max-width: 100%;
+  max-height: 88vh;
+  object-fit: contain;
+  display: block;
+  border: 1px solid rgba(255,255,255,0.08);
+  opacity: 1;
+  transition: opacity 0.18s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.lb-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--white);
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.18s;
+}
+
+.lb-close:hover { background: var(--ferrari); border-color: var(--ferrari); }
+
+.lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--white);
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition: background 0.18s;
+  z-index: 2;
+}
+
+.lb-nav:hover { background: var(--ferrari); border-color: var(--ferrari); }
+.lb-prev { left: 16px; }
+.lb-next { right: 16px; }
+
+.lb-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+@media (max-width: 620px) {
+  .lb-content { padding: 0 48px; max-width: 100vw; }
+  .lb-nav { width: 38px; height: 38px; font-size: 18px; }
+  .lb-prev { left: 6px; }
+  .lb-next { right: 6px; }
 }
 
 /* ─── ANIMAÇÕES ─── */
@@ -1513,7 +1615,7 @@ footer {
   </div>
 
   <div class="loc-actions fade">
-    <a href="https://www.google.com/maps/dir/?api=1&destination=R.+Júlio+Aragão,+160,+Braz+Cubas,+Mogi+das+Cruzes+SP+08740-030" target="_blank" class="btn-ferrari" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
+    <a href="https://maps.app.goo.gl/kEVjY4zEM61t5oG47" target="_blank" class="btn-ferrari" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
       🗺️ TRAÇAR ROTA
     </a>
     <a href="https://api.whatsapp.com/send?phone=5511960684018" target="_blank" class="btn-ghost" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
@@ -1590,7 +1692,7 @@ footer {
 
 <script>
 /* ═══════════════════════════════════════════
-   CARROSSEL DE REVIEWS — slide centrado com preview
+   CARROSSEL DE REVIEWS + LIGHTBOX
 ═══════════════════════════════════════════ */
 (function () {
   const slider   = document.getElementById('revSlider');
@@ -1603,25 +1705,32 @@ footer {
 
   let current  = 0;
   let autoTimer;
+  let slideW   = 0; // largura de um slide + gap, calculada no init
 
-  /* ── Calcular offset para centralizar o slide ativo ── */
-  function getOffset(idx) {
-    const slide    = slides[idx];
-    const vpWidth  = viewport.offsetWidth;
-    const slideW   = slide.offsetWidth;
-    const slideL   = slide.offsetLeft;
-    /* centraliza: move o slider de forma que o centro do slide == centro do viewport */
-    return slideL - (vpWidth / 2) + (slideW / 2);
+  /* ── Calcular largura do slide ── */
+  function calcSlideW() {
+    /* slide ocupa 42% do viewport; gap = 16px (8px cada lado) */
+    slideW = slides[0].offsetWidth + 16;
   }
 
-  /* ── Atualizar estado visual ── */
+  /* ── Offset para centralizar o slide ativo ──
+     Cada slide tem índice fixo; o offset é sempre idx * slideW
+     menos o espaço para centralizar no viewport               */
+  function getOffset(idx) {
+    const vpW    = viewport.offsetWidth;
+    const sw     = slides[0].offsetWidth;
+    /* center = idx * (sw + 16) - (vpW/2 - sw/2) */
+    return idx * (sw + 16) - (vpW / 2 - sw / 2);
+  }
+
+  /* ── Ir para índice ── */
   function goTo(idx) {
     current = ((idx % total) + total) % total;
 
-    slider.style.transform = `translateX(-${getOffset(current)}px)`;
+    const offset = getOffset(current);
+    slider.style.transform = `translateX(-${Math.max(0, offset)}px)`;
 
     slides.forEach((s, i) => s.classList.toggle('active', i === current));
-
     dotsWrap.querySelectorAll('.rev-dot').forEach((d, i) =>
       d.classList.toggle('active', i === current)
     );
@@ -1640,15 +1749,11 @@ footer {
   }
 
   /* ── Auto-play ── */
-  function startAuto() {
-    autoTimer = setInterval(() => goTo(current + 1), 5000);
-  }
+  function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 5000); }
+  function stopAuto()  { clearInterval(autoTimer); }
 
-  function stopAuto() { clearInterval(autoTimer); }
-
-  /* ── Swipe touch e mouse ── */
-  let startX = 0;
-  let dragging = false;
+  /* ── Swipe ── */
+  let startX = 0, dragging = false;
 
   viewport.addEventListener('touchstart',  e => { startX = e.touches[0].clientX; dragging = true; stopAuto(); }, { passive: true });
   viewport.addEventListener('touchend',    e => {
@@ -1657,8 +1762,8 @@ footer {
     if (Math.abs(dx) > 40) goTo(dx > 0 ? current + 1 : current - 1);
     startAuto();
   });
-  viewport.addEventListener('mousedown',   e => { startX = e.clientX; dragging = true; stopAuto(); });
-  viewport.addEventListener('mouseup',     e => {
+  viewport.addEventListener('mousedown',  e => { startX = e.clientX; dragging = true; stopAuto(); });
+  viewport.addEventListener('mouseup',    e => {
     if (!dragging) return; dragging = false;
     const dx = startX - e.clientX;
     if (Math.abs(dx) > 40) goTo(dx > 0 ? current + 1 : current - 1);
@@ -1670,19 +1775,85 @@ footer {
   btnPrev.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
   btnNext.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
 
-  /* ── Resize: recalcula offset ── */
-  window.addEventListener('resize', () => goTo(current));
+  /* ── Resize ── */
+  window.addEventListener('resize', () => { calcSlideW(); goTo(current); });
 
   /* ── Init ── */
   buildDots();
-  /* pequeno delay para garantir layout renderizado antes de calcular offsets */
   requestAnimationFrame(() => {
+    calcSlideW();
     slider.style.transition = 'none';
     goTo(0);
     requestAnimationFrame(() => {
       slider.style.transition = '';
       startAuto();
     });
+  });
+
+  /* ════════════════════════════════════════
+     LIGHTBOX
+  ════════════════════════════════════════ */
+  const lb        = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lbImg');
+  const lbClose   = document.getElementById('lbClose');
+  const lbPrev    = document.getElementById('lbPrev');
+  const lbNext    = document.getElementById('lbNext');
+  const lbCounter = document.getElementById('lbCounter');
+  let lbCurrent   = 0;
+  const imgs      = slides.map(s => s.querySelector('img'));
+
+  function lbOpen(idx) {
+    lbCurrent = ((idx % total) + total) % total;
+    lbImg.src = imgs[lbCurrent].src;
+    lbImg.alt = imgs[lbCurrent].alt;
+    lbCounter.textContent = (lbCurrent + 1) + ' / ' + total;
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function lbClose_fn() {
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function lbGoTo(idx) {
+    lbCurrent = ((idx % total) + total) % total;
+    lbImg.style.opacity = '0';
+    setTimeout(() => {
+      lbImg.src = imgs[lbCurrent].src;
+      lbImg.alt = imgs[lbCurrent].alt;
+      lbCounter.textContent = (lbCurrent + 1) + ' / ' + total;
+      lbImg.style.opacity = '1';
+    }, 180);
+  }
+
+  /* Abrir ao clicar no slide */
+  slides.forEach((s, i) => {
+    s.style.cursor = 'zoom-in';
+    s.addEventListener('click', (e) => {
+      if (Math.abs(startX - e.clientX) < 5) lbOpen(i);
+    });
+  });
+
+  lbClose.addEventListener('click', lbClose_fn);
+  lb.addEventListener('click', e => { if (e.target === lb) lbClose_fn(); });
+  lbPrev.addEventListener('click', e => { e.stopPropagation(); lbGoTo(lbCurrent - 1); });
+  lbNext.addEventListener('click', e => { e.stopPropagation(); lbGoTo(lbCurrent + 1); });
+
+  /* Teclado */
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'Escape')      lbClose_fn();
+    if (e.key === 'ArrowLeft')   lbGoTo(lbCurrent - 1);
+    if (e.key === 'ArrowRight')  lbGoTo(lbCurrent + 1);
+  });
+
+  /* Swipe no lightbox */
+  let lbStartX = 0;
+  lbImg.addEventListener('touchstart', e => { lbStartX = e.touches[0].clientX; }, { passive: true });
+  lbImg.addEventListener('touchend',   e => {
+    const dx = lbStartX - e.changedTouches[0].clientX;
+    if (Math.abs(dx) > 40) lbGoTo(dx > 0 ? lbCurrent + 1 : lbCurrent - 1);
   });
 })();
 </script>
@@ -1695,6 +1866,17 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade').forEach(el => obs.observe(el));
 </script>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lb-overlay" role="dialog" aria-modal="true" aria-label="Visualizar avaliação">
+  <button class="lb-close" id="lbClose" aria-label="Fechar">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Anterior">&#8592;</button>
+  <div class="lb-content">
+    <img id="lbImg" src="" alt="" draggable="false">
+  </div>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Próximo">&#8594;</button>
+  <div class="lb-counter" id="lbCounter">1 / 6</div>
+</div>
 
 </body>
 </html>

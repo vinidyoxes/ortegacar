@@ -3,8 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ortega Car — Manutenção Automotiva e Socorro 24h em Mogi das Cruzes SP. Atendimento na oficina, domicílio e emergência.">
-  <title>Ortega Car | Manutenção Automotiva e Socorro 24h</title>
+  <meta name="description" content="Oficina mecânica em Mogi das Cruzes com manutenção automotiva, diagnóstico, freios, suspensão, arrefecimento e socorro 24h. Fale com a Ortega Car.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://ortegacar.com.br/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Ortega Car">
+  <meta property="og:title" content="Oficina Mecânica em Mogi das Cruzes | Ortega Car">
+  <meta property="og:description" content="Manutenção automotiva, diagnóstico e socorro 24h em Mogi das Cruzes. Atendimento na oficina, em domicílio e em emergências.">
+  <meta property="og:url" content="https://ortegacar.com.br/">
+  <meta property="og:image" content="https://ortegacar.com.br/site/img/banner.jpg">
+  <meta property="og:image:alt" content="Ortega Car, oficina mecânica em Mogi das Cruzes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Oficina Mecânica em Mogi das Cruzes | Ortega Car">
+  <meta name="twitter:description" content="Manutenção automotiva e socorro 24h em Mogi das Cruzes.">
+  <meta name="twitter:image" content="https://ortegacar.com.br/site/img/banner.jpg">
+  <title>Oficina Mecânica em Mogi das Cruzes | Ortega Car</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/site/img/banner.jpg" media="(min-width: 621px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/site/img/bannerMob.jpg" media="(max-width: 620px)" fetchpriority="high">
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/site/img/favicon.ico">
@@ -12,12 +33,65 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/site/img/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/site/img/apple-touch-icon.png">
   <link rel="manifest" href="/site/img/site.webmanifest">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "@id": "https://ortegacar.com.br/#oficina",
+    "name": "Ortega Car",
+    "url": "https://ortegacar.com.br/",
+    "logo": "https://ortegacar.com.br/site/img/logo-256.png",
+    "image": [
+      "https://ortegacar.com.br/site/img/fachada.jpg",
+      "https://ortegacar.com.br/site/img/banner.jpg"
+    ],
+    "description": "Oficina mecânica e socorro automotivo 24 horas em Mogi das Cruzes.",
+    "telephone": "+5511922313058",
+    "priceRange": "$$",
+    "paymentAccepted": "Dinheiro, PIX, cartão de crédito e cartão de débito",
+    "currenciesAccepted": "BRL",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Júlio Aragão, 160 - Braz Cubas",
+      "addressLocality": "Mogi das Cruzes",
+      "addressRegion": "SP",
+      "postalCode": "08740-030",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -23.5393829,
+      "longitude": -46.2278328
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }],
+    "areaServed": {
+      "@type": "City",
+      "name": "Mogi das Cruzes"
+    },
+    "sameAs": ["https://maps.app.goo.gl/S8zGbCjphXVTzLj78"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Serviços automotivos",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Manutenção automotiva"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Socorro automotivo 24 horas", "url": "https://ortegacar.com.br/socorro/"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Diagnóstico automotivo"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Manutenção de freios e suspensão"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Manutenção do sistema de arrefecimento"}}
+      ]
+    }
+  }
+  </script>
 </head>
 <body>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap');
-
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
@@ -448,6 +522,19 @@ nav {
   border-left: 2px solid var(--ferrari);
   padding-left: 8px;
 }
+
+.svc-link {
+  display: inline-flex;
+  margin-top: 16px;
+  color: var(--ferrari);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.svc-link:hover { text-decoration: underline; }
 
 /* ─── WHY ─── */
 .why-layout {
@@ -1225,7 +1312,6 @@ footer {
   }
 
   .hero-img {
-    content: url('/site/img/bannerMob.png');
     object-position: center bottom;
   }
 
@@ -1512,21 +1598,25 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <a href="#top" class="logo">
-    <img src="/site/img/logo.png" alt="Ortega Car" class="logo-img">
+  <a href="/" class="logo" aria-label="Ortega Car - início">
+    <img src="/site/img/logo-256.png" alt="Ortega Car" class="logo-img" width="256" height="256" decoding="async">
   </a>
   <ul class="nav-links">
     <li><a href="#svc">Serviços</a></li>
+    <li><a href="/socorro/">Socorro 24h</a></li>
     <li><a href="#why">Diferenciais</a></li>
     <li><a href="#dep">Depoimentos</a></li>
     <li><a href="#ctt">Contato</a></li>
   </ul>
-  <a href="https://api.whatsapp.com/send?phone=5511922313058" class="nav-cta" target="_blank">🚨 Emergência 24H</a>
+  <a href="https://api.whatsapp.com/send?phone=5511922313058" class="nav-cta" target="_blank" rel="noopener">🚨 Emergência 24H</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <img class="hero-img" src="/site/img/banner.png" alt="Carro esportivo">
+  <picture>
+    <source media="(max-width: 620px)" srcset="/site/img/bannerMob.jpg">
+    <img class="hero-img" src="/site/img/banner.jpg" alt="Ortega Car, oficina mecânica e socorro automotivo em Mogi das Cruzes" width="1717" height="916" fetchpriority="high" decoding="async">
+  </picture>
   <div class="hero-vignette"></div>
   <div class="hero-left-bar"></div>
   <div class="hero-grid-overlay"></div>
@@ -1539,8 +1629,8 @@ footer {
 
     <h1>
       <span class="line-1">ORTEGA CAR</span><br>
-      <span class="line-2">CENTRO AUTOMOTIVO</span><br>
-      <span class="line-3">E SOCORRO 24H</span>
+      <span class="line-2">OFICINA MECÂNICA EM</span><br>
+      <span class="line-3">MOGI DAS CRUZES · SOCORRO 24H</span>
     </h1>
 
     <p class="hero-tagline">
@@ -1549,7 +1639,7 @@ footer {
     </p>
 
     <div class="hero-btns">
-      <a href="https://api.whatsapp.com/send?phone=5511922313058" class="btn-ferrari" target="_blank">🚨 SOCORRO AGORA</a>
+      <a href="https://api.whatsapp.com/send?phone=5511922313058" class="btn-ferrari" target="_blank" rel="noopener">🚨 SOCORRO AGORA</a>
       <a href="#svc" class="btn-ghost">VER SERVIÇOS →</a>
     </div>
 
@@ -1593,6 +1683,7 @@ footer {
       <div class="svc-name">Socorro 24 Horas</div>
       <p class="svc-desc">Pane na rua ou estrada? Atendemos todos os dias, feriados e madrugadas.</p>
       <span class="svc-pill">DISPONÍVEL AGORA</span>
+      <a class="svc-link" href="/socorro/">Ver socorro automotivo →</a>
     </div>
     <div class="svc-card fade">
       <div class="svc-number">03</div>
@@ -1695,12 +1786,12 @@ footer {
 
     <div class="rev-viewport">
       <div class="rev-slider" id="revSlider">
-        <div class="rev-slide"><img src="/site/img/reviews/review1.png" alt="Avaliação 1" loading="lazy"></div>
-        <div class="rev-slide"><img src="/site/img/reviews/review2.png" alt="Avaliação 2" loading="lazy"></div>
-        <div class="rev-slide"><img src="/site/img/reviews/review3.png" alt="Avaliação 3" loading="lazy"></div>
-        <div class="rev-slide"><img src="/site/img/reviews/review4.png" alt="Avaliação 4" loading="lazy"></div>
-        <div class="rev-slide"><img src="/site/img/reviews/review5.png" alt="Avaliação 5" loading="lazy"></div>
-        <div class="rev-slide"><img src="/site/img/reviews/review6.png" alt="Avaliação 6" loading="lazy"></div>
+        <div class="rev-slide"><img src="/site/img/reviews/review1.png" alt="Avaliação de cliente da Ortega Car no Google" width="580" height="534" loading="lazy" decoding="async"></div>
+        <div class="rev-slide"><img src="/site/img/reviews/review2.png" alt="Avaliação de cliente da Ortega Car no Google" width="567" height="527" loading="lazy" decoding="async"></div>
+        <div class="rev-slide"><img src="/site/img/reviews/review3.png" alt="Avaliação de cliente da Ortega Car no Google" width="593" height="534" loading="lazy" decoding="async"></div>
+        <div class="rev-slide"><img src="/site/img/reviews/review4.png" alt="Avaliação de cliente da Ortega Car no Google" width="593" height="534" loading="lazy" decoding="async"></div>
+        <div class="rev-slide"><img src="/site/img/reviews/review5.png" alt="Avaliação de cliente da Ortega Car no Google" width="572" height="290" loading="lazy" decoding="async"></div>
+        <div class="rev-slide"><img src="/site/img/reviews/review6.png" alt="Avaliação de cliente da Ortega Car no Google" width="576" height="332" loading="lazy" decoding="async"></div>
       </div>
     </div>
 
@@ -1715,7 +1806,7 @@ footer {
       <path fill="#FBBC05" d="M24 47c5.4 0 10-1.8 13.3-4.8l-7-5.4c-1.8 1.2-4.1 1.9-6.3 1.9-6.3 0-11.7-4.2-13.6-10l-7.9 6.1C6.9 41.4 14.8 47 24 47z"/>
     </svg>
     <span>Avaliações verificadas pelo Google</span>
-    <a href="https://maps.app.goo.gl/S8zGbCjphXVTzLj78" target="_blank" class="google-badge-link">Deixar avaliação ↗</a>
+    <a href="https://maps.app.goo.gl/S8zGbCjphXVTzLj78" target="_blank" rel="noopener" class="google-badge-link">Deixar avaliação ↗</a>
   </div>
 </section>
 
@@ -1730,7 +1821,7 @@ footer {
 
     <!-- FOTO DA FACHADA -->
     <div class="loc-fachada">
-      <img src="/site/img/fachada.png" alt="Fachada Ortega Car" class="fachada-img">
+      <img src="/site/img/fachada.jpg" alt="Fachada da oficina Ortega Car em Braz Cubas, Mogi das Cruzes" class="fachada-img" width="941" height="1672" loading="lazy" decoding="async">
       <div class="loc-address">
         <div class="loc-address-icon">📍</div>
         <div>
@@ -1749,7 +1840,7 @@ footer {
         height="100%"
         style="border:0; display:block;"
         allowfullscreen=""
-        loading="eager"
+        loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         title="Localização Ortega Car">
       </iframe>
@@ -1759,10 +1850,10 @@ footer {
   </div>
 
   <div class="loc-actions fade">
-    <a href="https://maps.app.goo.gl/S8zGbCjphXVTzLj78" target="_blank" class="btn-ferrari" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
+    <a href="https://maps.app.goo.gl/S8zGbCjphXVTzLj78" target="_blank" rel="noopener" class="btn-ferrari" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
       🗺️ TRAÇAR ROTA
     </a>
-    <a href="https://api.whatsapp.com/send?phone=5511922313058" target="_blank" class="btn-ghost" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
+    <a href="https://api.whatsapp.com/send?phone=5511922313058" target="_blank" rel="noopener" class="btn-ghost" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
       💬 FALAR COM A OFICINA
     </a>
   </div>
@@ -1796,7 +1887,7 @@ footer {
         <div class="contact-icon">💬</div>
         <div>
           <div class="contact-label">WhatsApp Emergência</div>
-          <a href="https://api.whatsapp.com/send?phone=5511922313058" class="contact-value" target="_blank">(11) 92231-3058</a>
+          <a href="https://api.whatsapp.com/send?phone=5511922313058" class="contact-value" target="_blank" rel="noopener">(11) 92231-3058</a>
         </div>
       </div>
       <div class="contact-item fade">
@@ -1819,7 +1910,7 @@ footer {
       <div class="cta-box fade">
         <div class="cta-title">EMERGÊNCIA?<br><span class="grad">CHAME AGORA.</span></div>
         <p class="cta-desc">Pane na rua, superaquecimento ou qualquer problema — nossa equipe resolve, qualquer hora.</p>
-        <a href="https://api.whatsapp.com/send?phone=5511922313058" class="wpp-btn" target="_blank">💬 CHAMAR NO WHATSAPP</a>
+        <a href="https://api.whatsapp.com/send?phone=5511922313058" class="wpp-btn" target="_blank" rel="noopener">💬 CHAMAR NO WHATSAPP</a>
         <a href="tel:+5511922313058" class="tel-btn">📞 (11) 92231-3058</a>
       </div>
     </div>
@@ -1829,7 +1920,7 @@ footer {
 <footer>
   <div class="foot-logo">ORTEGA <em>CAR</em></div>
   <div class="foot-info">
-    Manutenção Automotiva e Socorro · Mogi das Cruzes, SP<br>
+    Oficina mecânica e socorro automotivo · Mogi das Cruzes, SP · <a href="/socorro/">Socorro 24h</a><br>
     © 2026 Ortega Car — Todos os direitos reservados
   </div>
 </footer>

@@ -4,42 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090909">
-  <meta name="description" content="Socorro automotivo 24 horas em Mogi das Cruzes. Pane mecânica, carro sem partida, superaquecimento e atendimento no local. Chame a Ortega Car.">
-  <meta name="robots" content="index,follow">
+  <meta name="description" content="Socorro automotivo 24h em Mogi das Cruzes para pane mecânica, carro sem partida, superaquecimento e falha elétrica. Envie sua localização.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://ortegacar.com.br/socorro/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Ortega Car">
+  <meta property="og:title" content="Socorro Automotivo 24h em Mogi das Cruzes | Ortega Car">
+  <meta property="og:description" content="Atendimento automotivo no local para panes e imprevistos em Mogi das Cruzes. Disponível 24 horas.">
+  <meta property="og:url" content="https://ortegacar.com.br/socorro/">
+  <meta property="og:image" content="https://ortegacar.com.br/site/img/banner.jpg">
+  <meta property="og:image:alt" content="Socorro automotivo 24 horas da Ortega Car em Mogi das Cruzes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Socorro Automotivo 24h em Mogi das Cruzes | Ortega Car">
+  <meta name="twitter:description" content="Atendimento automotivo no local em Mogi das Cruzes, 24 horas por dia.">
+  <meta name="twitter:image" content="https://ortegacar.com.br/site/img/banner.jpg">
   <link rel="icon" type="image/svg+xml" href="/site/img/favicon.svg">
   <link rel="apple-touch-icon" href="/site/img/apple-touch-icon.png">
   <title>Socorro Automotivo 24h em Mogi das Cruzes | Ortega Car</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/site/img/banner.jpg" media="(min-width: 721px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/site/img/bannerMob.jpg" media="(max-width: 720px)" fetchpriority="high">
+
+  <!-- Google Ads: tag global para medir acessos e conversões da landing page. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17861946155"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'AW-17861946155');
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "AutoRepair",
-    "name": "Ortega Car",
-    "url": "https://ortegacar.com.br/socorro/",
-    "telephone": "+55 11 92231-3058",
-    "description": "Socorro automotivo 24 horas e manutenção automotiva em Mogi das Cruzes.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Rua Júlio Aragão, 160 - Braz Cubas",
-      "addressLocality": "Mogi das Cruzes",
-      "addressRegion": "SP",
-      "postalCode": "08740-030",
-      "addressCountry": "BR"
-    },
-    "openingHoursSpecification": [{
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
-    }],
-    "areaServed": "Mogi das Cruzes"
+    "@graph": [
+      {
+        "@type": "AutoRepair",
+        "@id": "https://ortegacar.com.br/#oficina",
+        "name": "Ortega Car",
+        "url": "https://ortegacar.com.br/",
+        "telephone": "+5511922313058",
+        "image": "https://ortegacar.com.br/site/img/fachada.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua Júlio Aragão, 160 - Braz Cubas",
+          "addressLocality": "Mogi das Cruzes",
+          "addressRegion": "SP",
+          "postalCode": "08740-030",
+          "addressCountry": "BR"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://ortegacar.com.br/socorro/#servico",
+        "name": "Socorro automotivo 24 horas em Mogi das Cruzes",
+        "url": "https://ortegacar.com.br/socorro/",
+        "description": "Atendimento automotivo no local para pane mecânica, carro sem partida, superaquecimento e falha elétrica.",
+        "serviceType": "Socorro automotivo 24 horas",
+        "provider": {"@id": "https://ortegacar.com.br/#oficina"},
+        "areaServed": {
+          "@type": "City",
+          "name": "Mogi das Cruzes"
+        },
+        "availableChannel": {
+          "@type": "ServiceChannel",
+          "servicePhone": {
+            "@type": "ContactPoint",
+            "telephone": "+5511922313058",
+            "contactType": "emergency"
+          }
+        }
+      }
+    ]
   }
   </script>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap');
-
     :root {
       --red: #e00000;
       --red-dark: #8e0000;
@@ -114,7 +158,7 @@
       position: absolute;
       inset: 0;
       z-index: -3;
-      background: url('/site/img/banner.png') 64% center / cover no-repeat;
+      background: url('/site/img/banner.jpg') 64% center / cover no-repeat;
     }
 
     .hero::after {
@@ -335,11 +379,11 @@
       .brand img { width: 64px; height: 64px; }
       .top-phone span { display: none; }
       .top-phone strong { font-size: 17px; }
-      .hero { min-height: auto; }
-      .hero::before { background-image: url('/site/img/bannerMob.png'); background-position: center top; }
+      .hero { min-height: auto; align-items: start; padding: 0; }
+      .hero::before { background-image: url('/site/img/bannerMob.jpg'); background-position: center top; }
       .hero::after { background: linear-gradient(180deg, rgba(8,8,8,.52) 0%, rgba(8,8,8,.9) 41%, #080808 75%); }
       .hero-grid { display: none; }
-      .hero-content { max-width: none; display: flex; flex-direction: column; padding: 29vh 0 54px; }
+      .hero-content { max-width: none; display: flex; flex-direction: column; padding: 5vh 0; }
       .status { margin-bottom: 13px; }
       h1 { margin-bottom: 14px; font-size: clamp(54px, 15vw, 68px); }
       .lead { margin-bottom: 18px; font-size: 17px; line-height: 1.4; }
@@ -389,7 +433,7 @@
   <header class="topbar">
     <div class="wrap topbar-inner">
       <a class="brand" href="/" aria-label="Ortega Car - página inicial">
-        <img src="/site/img/logo.png" alt="Ortega Car" width="72" height="72">
+        <img src="/site/img/logo-256.png" alt="Ortega Car" width="72" height="72" decoding="async">
       </a>
       <a class="top-phone" href="tel:+5511922313058" data-conversion="ligacao_topo">
         <span>Emergência 24h</span>
@@ -471,7 +515,10 @@
           <p class="eyebrow">Mogi das Cruzes</p>
           <h2>Atendimento nas principais vias</h2>
           <p class="section-intro">Informe a avenida, o sentido e um ponto de referência. A disponibilidade é confirmada no momento do chamado.</p>
-          <a class="btn btn-whatsapp" href="https://api.whatsapp.com/send?phone=5511922313058&amp;text=Ol%C3%A1%2C%20preciso%20de%20socorro%20automotivo.%20Estou%20em%3A%20%5Benvie%20sua%20localiza%C3%A7%C3%A3o%5D.%20Meu%20carro%20%C3%A9%3A%20%5Bmodelo%5D.%20O%20problema%20%C3%A9%3A%20%5Bdescreva%5D." target="_blank" rel="noopener" data-conversion="whatsapp_cobertura">Consultar atendimento</a>
+          <a class="btn btn-whatsapp" href="https://api.whatsapp.com/send?phone=5511922313058&amp;text=Ol%C3%A1%2C%20preciso%20de%20socorro%20automotivo.%20Estou%20em%3A%20%5Benvie%20sua%20localiza%C3%A7%C3%A3o%5D.%20Meu%20carro%20%C3%A9%3A%20%5Bmodelo%5D.%20O%20problema%20%C3%A9%3A%20%5Bdescreva%5D." target="_blank" rel="noopener" data-conversion="whatsapp_cobertura">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.83 11.83 0 0 0 12.08 0C5.5 0 .16 5.34.16 11.92c0 2.1.55 4.15 1.6 5.95L.06 24l6.28-1.65a11.9 11.9 0 0 0 5.73 1.46h.01C18.65 23.81 24 18.47 24 11.9c0-3.18-1.24-6.17-3.48-8.42ZM12.08 21.8h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.73.98 1-3.64-.24-.37a9.83 9.83 0 0 1-1.52-5.26c0-5.46 4.44-9.9 9.9-9.9a9.84 9.84 0 0 1 7 2.9 9.83 9.83 0 0 1 2.9 7c0 5.45-4.45 9.89-9.91 9.89Zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47a8.91 8.91 0 0 1-1.65-2.05c-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
+            Consultar atendimento
+          </a>
         </div>
         <ul class="coverage-list">
           <li>Av. Francisco Ferreira Lopes</li>
@@ -530,7 +577,10 @@
           <div class="final-content">
             <h2>Precisa de socorro agora?</h2>
             <p>Vá para um local seguro e envie sua localização. A equipe confirma as condições do atendimento pelo WhatsApp.</p>
-            <a class="btn btn-whatsapp" href="https://api.whatsapp.com/send?phone=5511922313058&amp;text=Ol%C3%A1%2C%20preciso%20de%20socorro%20automotivo.%20Estou%20em%3A%20%5Benvie%20sua%20localiza%C3%A7%C3%A3o%5D.%20Meu%20carro%20%C3%A9%3A%20%5Bmodelo%5D.%20O%20problema%20%C3%A9%3A%20%5Bdescreva%5D." target="_blank" rel="noopener" data-conversion="whatsapp_final">Chamar no WhatsApp</a>
+            <a class="btn btn-whatsapp" href="https://api.whatsapp.com/send?phone=5511922313058&amp;text=Ol%C3%A1%2C%20preciso%20de%20socorro%20automotivo.%20Estou%20em%3A%20%5Benvie%20sua%20localiza%C3%A7%C3%A3o%5D.%20Meu%20carro%20%C3%A9%3A%20%5Bmodelo%5D.%20O%20problema%20%C3%A9%3A%20%5Bdescreva%5D." target="_blank" rel="noopener" data-conversion="whatsapp_final">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.83 11.83 0 0 0 12.08 0C5.5 0 .16 5.34.16 11.92c0 2.1.55 4.15 1.6 5.95L.06 24l6.28-1.65a11.9 11.9 0 0 0 5.73 1.46h.01C18.65 23.81 24 18.47 24 11.9c0-3.18-1.24-6.17-3.48-8.42ZM12.08 21.8h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.73.98 1-3.64-.24-.37a9.83 9.83 0 0 1-1.52-5.26c0-5.46 4.44-9.9 9.9-9.9a9.84 9.84 0 0 1 7 2.9 9.83 9.83 0 0 1 2.9 7c0 5.45-4.45 9.89-9.91 9.89Zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47a8.91 8.91 0 0 1-1.65-2.05c-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
+              Chamar no WhatsApp
+            </a>
           </div>
         </div>
       </div>
@@ -546,18 +596,36 @@
 
   <div class="mobile-bar" aria-label="Contato de emergência">
     <a class="btn btn-call" href="tel:+5511922313058" data-conversion="ligacao_fixo">Ligar</a>
-    <a class="btn btn-whatsapp" href="https://api.whatsapp.com/send?phone=5511922313058&amp;text=Ol%C3%A1%2C%20preciso%20de%20socorro%20automotivo.%20Estou%20em%3A%20%5Benvie%20sua%20localiza%C3%A7%C3%A3o%5D.%20Meu%20carro%20%C3%A9%3A%20%5Bmodelo%5D.%20O%20problema%20%C3%A9%3A%20%5Bdescreva%5D." target="_blank" rel="noopener" data-conversion="whatsapp_fixo">WhatsApp</a>
+    <a class="btn btn-whatsapp" href="https://api.whatsapp.com/send?phone=5511922313058&amp;text=Ol%C3%A1%2C%20preciso%20de%20socorro%20automotivo.%20Estou%20em%3A%20%5Benvie%20sua%20localiza%C3%A7%C3%A3o%5D.%20Meu%20carro%20%C3%A9%3A%20%5Bmodelo%5D.%20O%20problema%20%C3%A9%3A%20%5Bdescreva%5D." target="_blank" rel="noopener" data-conversion="whatsapp_fixo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.83 11.83 0 0 0 12.08 0C5.5 0 .16 5.34.16 11.92c0 2.1.55 4.15 1.6 5.95L.06 24l6.28-1.65a11.9 11.9 0 0 0 5.73 1.46h.01C18.65 23.81 24 18.47 24 11.9c0-3.18-1.24-6.17-3.48-8.42ZM12.08 21.8h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.73.98 1-3.64-.24-.37a9.83 9.83 0 0 1-1.52-5.26c0-5.46 4.44-9.9 9.9-9.9a9.84 9.84 0 0 1 7 2.9 9.83 9.83 0 0 1 2.9 7c0 5.45-4.45 9.89-9.91 9.89Zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47a8.91 8.91 0 0 1-1.65-2.05c-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
+      WhatsApp
+    </a>
   </div>
 
   <script>
-    window.dataLayer = window.dataLayer || [];
+    function reportWhatsAppConversion() {
+      if (typeof window.gtag !== 'function') return;
+
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-17861946155/uxG5CJX3jIAdEKvWnsVC',
+        value: 1.0,
+        currency: 'BRL'
+      });
+    }
+
     document.querySelectorAll('[data-conversion]').forEach(function (link) {
       link.addEventListener('click', function () {
+        var leadType = link.dataset.conversion;
+
         window.dataLayer.push({
           event: 'lead_click',
-          lead_type: link.dataset.conversion,
+          lead_type: leadType,
           page_path: window.location.pathname
         });
+
+        if (leadType.indexOf('whatsapp_') === 0) {
+          reportWhatsAppConversion();
+        }
       });
     });
   </script>

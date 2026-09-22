@@ -43,6 +43,15 @@
     })(window, document, "clarity", "script", "ymcsr0ysj9");
   </script>
 
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6C7499P15B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-6C7499P15B');
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -2154,8 +2163,15 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
 <script>
 document.querySelectorAll('a[href*="api.whatsapp.com"], a[href^="tel:"]').forEach(function (link) {
   link.addEventListener('click', function () {
-    var eventName = link.href.indexOf('tel:') === 0 ? 'phone_click' : 'whatsapp_click';
+    var method = link.href.indexOf('tel:') === 0 ? 'phone' : 'whatsapp';
+    var eventName = method + '_click';
+
     window.clarity('event', eventName);
+    window.gtag('event', 'generate_lead', {
+      method: method,
+      page_path: window.location.pathname,
+      link_url: link.href
+    });
   });
 });
 </script>

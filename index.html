@@ -34,6 +34,15 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/site/img/apple-touch-icon.png">
   <link rel="manifest" href="/site/img/site.webmanifest">
 
+  <!-- Microsoft Clarity: mapas de calor e gravações de sessão. -->
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "ymcsr0ysj9");
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -2140,6 +2149,15 @@ const obs = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+
+<script>
+document.querySelectorAll('a[href*="api.whatsapp.com"], a[href^="tel:"]').forEach(function (link) {
+  link.addEventListener('click', function () {
+    var eventName = link.href.indexOf('tel:') === 0 ? 'phone_click' : 'whatsapp_click';
+    window.clarity('event', eventName);
+  });
+});
 </script>
 
 </body>

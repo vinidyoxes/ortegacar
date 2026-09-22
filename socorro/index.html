@@ -45,6 +45,7 @@
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'AW-17861946155');
+    gtag('config', 'G-6C7499P15B');
   </script>
 
   <script type="application/ld+json">
@@ -632,7 +633,15 @@
           page_path: window.location.pathname
         });
 
-        window.clarity('event', leadType.indexOf('whatsapp_') === 0 ? 'whatsapp_click' : 'phone_click');
+        var method = leadType.indexOf('whatsapp_') === 0 ? 'whatsapp' : 'phone';
+
+        window.clarity('event', method + '_click');
+        window.gtag('event', 'generate_lead', {
+          method: method,
+          lead_type: leadType,
+          page_path: window.location.pathname,
+          link_url: link.href
+        });
 
         if (leadType.indexOf('whatsapp_') === 0) {
           reportWhatsAppConversion();

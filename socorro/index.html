@@ -19,15 +19,15 @@
   <meta name="twitter:title" content="Socorro Automotivo 24h em Mogi das Cruzes | Ortega Car">
   <meta name="twitter:description" content="Atendimento automotivo no local em Mogi das Cruzes, 24 horas por dia.">
   <meta name="twitter:image" content="https://ortegacar.com.br/site/img/banner.jpg">
-  <link rel="icon" type="image/svg+xml" href="/site/img/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/site/img/favicon-32x32.png">
   <link rel="apple-touch-icon" href="/site/img/apple-touch-icon.png">
   <title>Socorro Automotivo 24h em Mogi das Cruzes | Ortega Car</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="/site/img/banner.jpg" media="(min-width: 721px)" fetchpriority="high">
-  <link rel="preload" as="image" href="/site/img/bannerMob.jpg" media="(max-width: 720px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/site/img/banner.webp" type="image/webp" media="(min-width: 721px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/site/img/bannerMob.webp" type="image/webp" media="(max-width: 720px)" fetchpriority="high">
 
   <!-- Microsoft Clarity: mapas de calor e gravações de sessão. -->
   <script>
@@ -168,7 +168,7 @@
       position: absolute;
       inset: 0;
       z-index: -3;
-      background: url('/site/img/banner.jpg') 64% center / cover no-repeat;
+      background: image-set(url('/site/img/banner.webp') type('image/webp'), url('/site/img/banner.jpg') type('image/jpeg')) 64% center / cover no-repeat;
     }
 
     .hero::after {
@@ -390,7 +390,7 @@
       .top-phone span { display: none; }
       .top-phone strong { font-size: 17px; }
       .hero { min-height: auto; align-items: start; padding: 0; }
-      .hero::before { background-image: url('/site/img/bannerMob.jpg'); background-position: center top; }
+      .hero::before { background-image: image-set(url('/site/img/bannerMob.webp') type('image/webp'), url('/site/img/bannerMob.jpg') type('image/jpeg')); background-position: center top; }
       .hero::after { background: linear-gradient(180deg, rgba(8,8,8,.52) 0%, rgba(8,8,8,.9) 41%, #080808 75%); }
       .hero-grid { display: none; }
       .hero-content { max-width: none; display: flex; flex-direction: column; padding: 5vh 0; }

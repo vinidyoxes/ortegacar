@@ -11,22 +11,22 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Ortega Car">
-  <meta property="og:title" content="Oficina Mecânica em Mogi das Cruzes | Ortega Car">
+  <meta property="og:title" content="Ortega Car | Oficina Mecânica e Socorro 24h em Mogi">
   <meta property="og:description" content="Manutenção automotiva, diagnóstico e socorro 24h em Mogi das Cruzes. Atendimento na oficina, em domicílio e em emergências.">
   <meta property="og:url" content="https://ortegacar.com.br/">
   <meta property="og:image" content="https://ortegacar.com.br/site/img/banner.jpg">
   <meta property="og:image:alt" content="Ortega Car, oficina mecânica em Mogi das Cruzes">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Oficina Mecânica em Mogi das Cruzes | Ortega Car">
+  <meta name="twitter:title" content="Ortega Car | Oficina Mecânica e Socorro 24h em Mogi">
   <meta name="twitter:description" content="Manutenção automotiva e socorro 24h em Mogi das Cruzes.">
   <meta name="twitter:image" content="https://ortegacar.com.br/site/img/banner.jpg">
-  <title>Oficina Mecânica em Mogi das Cruzes | Ortega Car</title>
+  <title>Ortega Car | Oficina Mecânica e Socorro 24h em Mogi</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="/site/img/banner.jpg" media="(min-width: 621px)" fetchpriority="high">
-  <link rel="preload" as="image" href="/site/img/bannerMob.jpg" media="(max-width: 620px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/site/img/banner.webp" type="image/webp" media="(min-width: 621px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/site/img/bannerMob.webp" type="image/webp" media="(max-width: 620px)" fetchpriority="high">
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/site/img/favicon.ico">
@@ -83,12 +83,6 @@
       "latitude": -23.5393829,
       "longitude": -46.2278328
     },
-    "openingHoursSpecification": [{
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
-    }],
     "areaServed": {
       "@type": "City",
       "name": "Mogi das Cruzes"
@@ -98,17 +92,17 @@
       "@type": "OfferCatalog",
       "name": "Serviços automotivos",
       "itemListElement": [
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Manutenção automotiva"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Manutenção automotiva", "url": "https://ortegacar.com.br/oficina-mecanica-mogi-das-cruzes/"}},
         {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Socorro automotivo 24 horas", "url": "https://ortegacar.com.br/socorro/"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Diagnóstico automotivo"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Manutenção de freios e suspensão"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Manutenção do sistema de arrefecimento"}}
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mecânico em domicílio", "url": "https://ortegacar.com.br/mecanico-em-domicilio/"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Diagnóstico automotivo", "url": "https://ortegacar.com.br/diagnostico-automotivo/"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Manutenção de freios e suspensão", "url": "https://ortegacar.com.br/freios-e-suspensao/"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Manutenção do sistema de arrefecimento", "url": "https://ortegacar.com.br/arrefecimento/"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Manutenção de motor e cabeçote", "url": "https://ortegacar.com.br/motor-e-cabecote/"}}
       ]
     }
   }
   </script>
-</head>
-<body>
 
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1625,7 +1619,15 @@ footer {
   #svc .svc-grid { gap: 8px; }
   #loc .loc-grid { gap: 8px; }
 }
+
+.home-faq { max-width: 900px; margin: 38px auto 0; }
+.home-faq details { border-top: 1px solid rgba(255,255,255,.15); padding: 18px 4px; }
+.home-faq details:last-child { border-bottom: 1px solid rgba(255,255,255,.15); }
+.home-faq summary { cursor: pointer; color: #fff; font-weight: 700; font-size: 18px; }
+.home-faq details p { margin: 12px 0 0; color: #bcbcbc; line-height: 1.7; }
 </style>
+</head>
+<body>
 
 <!-- NAV -->
 <nav>
@@ -1645,7 +1647,8 @@ footer {
 <!-- HERO -->
 <section class="hero" id="top">
   <picture>
-    <source media="(max-width: 620px)" srcset="/site/img/bannerMob.jpg">
+    <source media="(max-width: 620px)" srcset="/site/img/bannerMob.webp" type="image/webp">
+    <source srcset="/site/img/banner.webp" type="image/webp">
     <img class="hero-img" src="/site/img/banner.jpg" alt="Ortega Car, oficina mecânica e socorro automotivo em Mogi das Cruzes" width="1717" height="916" fetchpriority="high" decoding="async">
   </picture>
   <div class="hero-vignette"></div>
@@ -1659,14 +1662,14 @@ footer {
     </div>
 
     <h1>
-      <span class="line-1">ORTEGA CAR</span><br>
-      <span class="line-2">OFICINA ESPECIALIZADA</span><br>
+      <span class="line-1">OFICINA MECÂNICA</span><br>
+      <span class="line-2">EM MOGI DAS CRUZES</span><br>
       <span class="line-3">E SOCORRO 24H</span>
     </h1>
 
     <p class="hero-tagline">
-      <strong>Qualidade e honestidade.</strong><br>
-      Na oficina, na sua casa ou onde seu carro parar.
+      <strong>Nota 5,0 e mais de 100 avaliações no Google.</strong><br>
+      Manutenção na oficina, em domicílio ou onde seu carro parar.
     </p>
 
     <div class="hero-btns">
@@ -1706,40 +1709,46 @@ footer {
   <div class="svc-grid">
     <div class="svc-card fade">
       <div class="svc-number">01</div>
-      <div class="svc-name">Manutenção Geral</div>
+      <h3 class="svc-name">Manutenção Geral</h3>
       <p class="svc-desc">Revisões completas, diagnósticos precisos e reparos mecânicos preventivos e corretivos.</p>
+      <a class="svc-link" href="/oficina-mecanica-mogi-das-cruzes/">Ver oficina mecânica →</a>
     </div>
     <div class="svc-card fade">
       <div class="svc-number">02</div>
-      <div class="svc-name">Socorro 24 Horas</div>
+      <h3 class="svc-name">Socorro 24 Horas</h3>
       <p class="svc-desc">Pane na rua ou estrada? Atendemos todos os dias, feriados e madrugadas.</p>
       <span class="svc-pill">DISPONÍVEL AGORA</span>
       <a class="svc-link" href="/socorro/">Ver socorro automotivo →</a>
     </div>
     <div class="svc-card fade">
       <div class="svc-number">03</div>
-      <div class="svc-name">Atendimento Domiciliar</div>
+      <h3 class="svc-name">Atendimento Domiciliar</h3>
       <p class="svc-desc">O mecânico vai até você — na sua casa ou trabalho, onde for mais cômodo.</p>
+      <a class="svc-link" href="/mecanico-em-domicilio/">Ver mecânico em domicílio →</a>
     </div>
     <div class="svc-card fade">
       <div class="svc-number">04</div>
-      <div class="svc-name">Diagnóstico Especializado</div>
+      <h3 class="svc-name">Diagnóstico Especializado</h3>
       <p class="svc-desc">Resolvemos o que outras 3 oficinas não conseguiram. Tecnologia e experiência real.</p>
+      <a class="svc-link" href="/diagnostico-automotivo/">Ver diagnóstico automotivo →</a>
     </div>
     <div class="svc-card fade">
       <div class="svc-number">05</div>
-      <div class="svc-name">Arrefecimento</div>
+      <h3 class="svc-name">Arrefecimento</h3>
       <p class="svc-desc">Vazamento de água, superaquecimento, radiador — manutenção completa do sistema.</p>
+      <a class="svc-link" href="/arrefecimento/">Ver sistema de arrefecimento →</a>
     </div>
     <div class="svc-card fade">
       <div class="svc-number">06</div>
-      <div class="svc-name">Suspensão e Freios</div>
+      <h3 class="svc-name">Suspensão e Freios</h3>
       <p class="svc-desc">Pastilhas, discos, amortecedores — segurança em cada componente trocado.</p>
+      <a class="svc-link" href="/freios-e-suspensao/">Ver freios e suspensão →</a>
     </div>
     <div class="svc-card fade">
       <div class="svc-number">07</div>
-      <div class="svc-name">Motor e Cabeçote</div>
+      <h3 class="svc-name">Motor e Cabeçote</h3>
       <p class="svc-desc">Retífica e manutenção pesada. Restauramos a potência e vida útil do seu motor.</p>
+      <a class="svc-link" href="/motor-e-cabecote/">Ver motor e cabeçote →</a>
     </div>
   </div>
 </section>
@@ -1795,8 +1804,8 @@ footer {
       <div class="hours-card fade">
         <div class="hours-num">24H</div>
         <div>
-          <div class="hours-title">Aberto Todo Dia</div>
-          <div class="hours-sub">Seg a Dom — incluindo feriados</div>
+          <div class="hours-title">Socorro Todo Dia</div>
+          <div class="hours-sub">Chamados 24h, incluindo feriados</div>
         </div>
       </div>
     </div>
@@ -1811,9 +1820,24 @@ footer {
   <h2 class="sec-title fade">O QUE <span class="grad">NOSSOS CLIENTES<br>FALAM DE NÓS</span></h2>
   <p class="sec-desc fade">Avaliações reais de clientes que confiaram nos nossos serviços.</p>
 
+  <div class="svc-grid">
+    <blockquote class="svc-card fade">
+      <p class="svc-desc">“Serviço impecável, preço justo e muita transparência. Explicou com clareza tudo o que aconteceu com o veículo.”</p>
+      <p class="svc-name">Danieli Aguiar · Google</p>
+    </blockquote>
+    <blockquote class="svc-card fade">
+      <p class="svc-desc">“Atendimento excelente, agilidade e conhecimento no que fazem. Recomendo e voltarei mais vezes.”</p>
+      <p class="svc-name">Sheila Cristina · Google</p>
+    </blockquote>
+    <blockquote class="svc-card fade">
+      <p class="svc-desc">“Serviços prestados com clareza, transparência e respeito com o cliente. Super indico a oficina.”</p>
+      <p class="svc-name">Jardeline Caetano · Google</p>
+    </blockquote>
+  </div>
+
   <div class="rev-carousel fade">
-    <button class="rev-arr rev-arr-prev" id="revPrev" aria-label="Anterior">&#8592;</button>
-    <button class="rev-arr rev-arr-next" id="revNext" aria-label="Próximo">&#8594;</button>
+    <button type="button" class="rev-arr rev-arr-prev" id="revPrev" aria-label="Anterior">&#8592;</button>
+    <button type="button" class="rev-arr rev-arr-next" id="revNext" aria-label="Próximo">&#8594;</button>
 
     <div class="rev-viewport">
       <div class="rev-slider" id="revSlider">
@@ -1843,6 +1867,33 @@ footer {
 
 <div class="slash"></div>
 
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="sec-eyebrow fade">Respostas rápidas</div>
+  <h2 class="sec-title fade">DÚVIDAS SOBRE A <span class="grad">ORTEGA CAR</span></h2>
+  <p class="sec-desc fade">Informações objetivas para escolher o atendimento adequado.</p>
+  <div class="home-faq fade">
+    <details>
+      <summary>A Ortega Car atende carros que pararam na rua?</summary>
+      <p>Sim. O socorro automotivo recebe chamados 24 horas em Mogi das Cruzes para pane, falha na partida, superaquecimento e outros imprevistos. A disponibilidade para o local é confirmada no contato.</p>
+    </details>
+    <details>
+      <summary>Existe atendimento de mecânico em domicílio?</summary>
+      <p>Sim. A equipe pode ir até sua casa ou trabalho para avaliar o veículo e realizar serviços compatíveis com o local, mediante confirmação de disponibilidade.</p>
+    </details>
+    <details>
+      <summary>A oficina apresenta orçamento antes do reparo?</summary>
+      <p>Sim. Depois da avaliação, a equipe explica o diagnóstico, os serviços recomendados e o orçamento antes de iniciar o reparo.</p>
+    </details>
+    <details>
+      <summary>Quais regiões são atendidas?</summary>
+      <p>A Ortega Car atende Braz Cubas e outras regiões de Mogi das Cruzes. Consulte a disponibilidade para o endereço exato pelo WhatsApp.</p>
+    </details>
+  </div>
+</section>
+
+<div class="slash"></div>
+
 <!-- LOCALIZAÇÃO -->
 <section class="sec sec-alt" id="loc">
   <div class="sec-eyebrow fade">Como chegar</div>
@@ -1852,7 +1903,7 @@ footer {
 
     <!-- FOTO DA FACHADA -->
     <div class="loc-fachada">
-      <img src="/site/img/fachada.jpg" alt="Fachada da oficina Ortega Car em Braz Cubas, Mogi das Cruzes" class="fachada-img" width="941" height="1672" loading="lazy" decoding="async">
+      <picture><source srcset="/site/img/fachada.webp" type="image/webp"><img src="/site/img/fachada.jpg" alt="Fachada da oficina Ortega Car em Braz Cubas, Mogi das Cruzes" class="fachada-img" width="941" height="1672" loading="lazy" decoding="async"></picture>
       <div class="loc-address">
         <div class="loc-address-icon">📍</div>
         <div>
@@ -1867,8 +1918,8 @@ footer {
     <div class="loc-map">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.8086739297873!2d-46.22783282467052!3d-23.53938287881496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cdd95c3cded34b%3A0x9875f7214b7a0f85!2sOrtega%20Car%20%7C%20Manuten%C3%A7%C3%A3o%20Automotiva%20e%20Socorro!5e0!3m2!1spt-BR!2sbr!4v1781398063873!5m2!1spt-BR!2sbr"
-        width="100%"
-        height="100%"
+        width="600"
+        height="450"
         style="border:0; display:block;"
         allowfullscreen=""
         loading="lazy"
@@ -1958,12 +2009,12 @@ footer {
 
 <!-- LIGHTBOX -->
 <div id="lightbox" class="lb-overlay" role="dialog" aria-modal="true" aria-label="Visualizar avaliação">
-  <button class="lb-close" id="lbClose" aria-label="Fechar">✕</button>
-  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Anterior">&#8592;</button>
+  <button type="button" class="lb-close" id="lbClose" aria-label="Fechar">✕</button>
+  <button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="Anterior">&#8592;</button>
   <div class="lb-content">
-    <img id="lbImg" src="" alt="" draggable="false">
+    <img id="lbImg" src="/site/img/reviews/review1.png" alt="" draggable="false">
   </div>
-  <button class="lb-nav lb-next" id="lbNext" aria-label="Próximo">&#8594;</button>
+  <button type="button" class="lb-nav lb-next" id="lbNext" aria-label="Próximo">&#8594;</button>
   <div class="lb-counter" id="lbCounter">1 / 6</div>
 </div>
 
